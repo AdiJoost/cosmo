@@ -37,11 +37,11 @@ while connected:
             print(md.rigth_backward())
         elif message == "a":
             print(md.rigth_stop())
-        elif message == "w":
+        elif message == "e":
             print(md.left_forward())
-        elif message == "x":
+        elif message == "c":
             print(md.left_backward())
-        elif message == "s":
+        elif message == "d":
             print(md.left_stop())
 
 

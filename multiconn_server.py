@@ -38,18 +38,19 @@ def handle_client(conn, addr):
             send('a', conn)
         elif k == ord('y'):
             send('y', conn)
-        elif k == ord('w'):
-            send('w', conn)
-        elif k == ord('s'):
-            send('s', conn)
-        elif k == ord('x'):
-            send('x', conn)
+        elif k == ord('e'):
+            send('e', conn)
+        elif k == ord('d'):
+            send('d', conn)
+        elif k == ord('c'):
+            send('c', conn)
             
     send(DISCONECT_MSG, conn)
     print(f"[Disconnecting]Sending disconect message to {addr}")
     conn.close()
     print(f"[Disconect] {addr} disconected")
-    cv2.close()        
+    cv2.destroyWindow('img')
+           
 
 def start():
     server.listen()
