@@ -1,5 +1,6 @@
 import socket
 import threading
+import cv2
 
 HEADER = 64
 PORT= 5050
@@ -25,17 +26,30 @@ def handle_client(conn, addr):
     print(f"[NEW CONNECTION] {addr} connected")
     
     connected = True
+    img = cv2.imread("dummy.jpg")
     while connected:
-        user_input = input()
-        if (user_input == "p"):
+        cv2.imshow('img', img)
+        k = cv2.waitKey(1)
+        if k == ord('p'):
             connected = False
-        else:
-            send(user_input, conn)
+        elif k == ord('q'):
+            send('q', conn)
+        elif k == ord('a'):
+            send('a', conn)
+        elif k == ord('y'):
+            send('y', conn)
+        elif k == ord('w'):
+            send('w', conn)
+        elif k == ord('s'):
+            send('s', conn)
+        elif k == ord('x'):
+            send('x', conn)
             
     send(DISCONECT_MSG, conn)
     print(f"[Disconnecting]Sending disconect message to {addr}")
     conn.close()
-    print(f"[Disconect] {addr} disconected")        
+    print(f"[Disconect] {addr} disconected")
+    cv2.close()        
 
 def start():
     server.listen()
